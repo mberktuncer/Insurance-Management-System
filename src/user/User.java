@@ -13,10 +13,10 @@ public class User {
     private String password;
     private String job;
     private int age;
-    private Date lastLoginDate;
+    private String lastLoginDate;
     private ArrayList<Address> addresses;
 
-    public User(String firstName, String lastName, String email, String password, String job, int age, Date lastLoginDate, ArrayList<Address> addresses) {
+    public User(String firstName, String lastName, String email, String password, String job, int age, String lastLoginDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -24,7 +24,6 @@ public class User {
         this.job = job;
         this.age = age;
         this.lastLoginDate = lastLoginDate;
-        this.addresses = addresses;
     }
 
     public String getFirstName() {
@@ -75,11 +74,11 @@ public class User {
         this.age = age;
     }
 
-    public Date getLastLoginDate() {
+    public String getLastLoginDate() {
         return lastLoginDate;
     }
 
-    public void setLastLoginDate(Date lastLoginDate) {
+    public void setLastLoginDate(String lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
     }
 
@@ -90,4 +89,5 @@ public class User {
     public void setAddresses(ArrayList<Address> addresses) {
         this.addresses = addresses;
     }
+
 }

@@ -5,23 +5,30 @@ import user.User;
 
 import java.util.ArrayList;
 
-public abstract class Account {
+public abstract class Account implements Comparable<Account>{
+
+    private final double rate;
+    private User user;
+    private final ArrayList<Insurance> insurances;
 
     public enum AuthenticationStatus{
         SUCCESS,
         FAIL
     }
-    private User user;
-    private ArrayList<Insurance> accounts;
-    private AuthenticationStatus authenticationStatus;
 
-    public Account(User user, ArrayList<Insurance> accounts, AuthenticationStatus authenticationStatus) {
+    public Account(User user, double rate) {
         this.user = user;
-        this.accounts = accounts;
-        this.authenticationStatus = authenticationStatus;
+        this.insurances = new ArrayList<>();
+        this.rate = rate;
     }
 
-    public abstract void showUserInfo();
+    public double getRate() {
+        return rate;
+    }
+
+    public  void showUserInfo(){
+        System.out.println(user.toString());
+    }
 
     public User getUser() {
         return user;
@@ -31,19 +38,12 @@ public abstract class Account {
         this.user = user;
     }
 
-    public ArrayList<Insurance> getAccounts() {
-        return accounts;
+    public ArrayList<Insurance> getInsurances() {
+        return insurances;
+    }
+    @Override
+    public int compareTo(Account account) {
+        return this.user.getEmail().compareTo(account.user.getEmail());
     }
 
-    public void setAccounts(ArrayList<Insurance> accounts) {
-        this.accounts = accounts;
-    }
-
-    public AuthenticationStatus getAuthenticationStatus() {
-        return authenticationStatus;
-    }
-
-    public void setAuthenticationStatus(AuthenticationStatus authenticationStatus) {
-        this.authenticationStatus = authenticationStatus;
-    }
 }

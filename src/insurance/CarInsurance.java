@@ -1,14 +1,13 @@
 package insurance;
 
+import account.Account;
+
 import java.util.Date;
 
 public class CarInsurance extends Insurance{
-    public CarInsurance(String name, double price, Date insuranceStartDate, Date insuranceFinishDate) {
-        super(name, price, insuranceStartDate, insuranceFinishDate);
-    }
 
-    @Override
-    public void calculate() {
-
+    private static final double rate = 1.50;
+    public CarInsurance(Account account) {
+        super(account, "Car Insurance", rate);
     }
 }

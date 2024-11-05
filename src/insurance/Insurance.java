@@ -1,52 +1,50 @@
 package insurance;
 
+import account.Account;
+
 import java.util.Date;
+import java.util.Scanner;
 
 public abstract class Insurance {
+    Account account;
+    String name;
+    String startDate;
+    String endDate;
+    String type;
+    double price;
+    double rate;
 
-    private String name;
-    private double price;
-    private Date insuranceStartDate;
-    private Date insuranceFinishDate;
-
-    public Insurance(String name, double price, Date insuranceStartDate, Date insuranceFinishDate) {
-        this.name = name;
-        this.price = price;
-        this.insuranceStartDate = insuranceStartDate;
-        this.insuranceFinishDate = insuranceFinishDate;
+    Insurance(Account account, String type, double rate) {
+        this.account = account;
+        this.type = type;
+        this.rate = rate;
+        createInsurance();
     }
 
-    public abstract void calculate();
+    public void createInsurance() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("--------Create New Insurance--------");
 
-    public String getName() {
-        return name;
+        System.out.print("Insurance Name: ");
+        this.name = scanner.nextLine();
+        System.out.print("Start Date: ");
+        this.startDate = scanner.nextLine();
+        System.out.print("End Date: ");
+        this.endDate = scanner.nextLine();
+        System.out.print("Price: ");
+        this.price = scanner.nextDouble();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public double calculate() {
+        return price * rate * account.getRate();
     }
 
-    public double getPrice() {
-        return price;
+    public String getType() {
+        return type;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public Date getInsuranceStartDate() {
-        return insuranceStartDate;
-    }
-
-    public void setInsuranceStartDate(Date insuranceStartDate) {
-        this.insuranceStartDate = insuranceStartDate;
-    }
-
-    public Date getInsuranceFinishDate() {
-        return insuranceFinishDate;
-    }
-
-    public void setInsuranceFinishDate(Date insuranceFinishDate) {
-        this.insuranceFinishDate = insuranceFinishDate;
+    @Override
+    public String toString() {
+        return "Name: " + name + " Start Date: " + startDate + " End Date: " + endDate + " Total Price: " + calculate();
     }
 }

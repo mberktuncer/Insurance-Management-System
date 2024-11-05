@@ -1,17 +1,11 @@
 package account;
 
-import insurance.Insurance;
 import user.User;
 
-import java.util.ArrayList;
-
 public class EnterpriseAccount extends Account{
-    public EnterpriseAccount(User user, ArrayList<Insurance> accounts, AuthenticationStatus authenticationStatus) {
-        super(user, accounts, authenticationStatus);
-    }
+    public static final double rate = 1.50;
 
-    @Override
-    public void showUserInfo() {
-
+    public EnterpriseAccount(User user) {
+        super(user, rate);
     }
 }
