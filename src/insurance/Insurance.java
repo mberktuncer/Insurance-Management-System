@@ -16,6 +16,8 @@ public abstract class Insurance {
         this.insuranceFinishDate = insuranceFinishDate;
     }
 
+    public abstract void calculate();
+
     public String getName() {
         return name;
     }
